@@ -99,7 +99,7 @@ module SmartListing
 
         locals = {
           :order => @smart_listing.sort_order(attribute),
-          :url => @template.url_for(sanitize_params(@template.params.merge(@smart_listing.all_params(:sort => sort_params)))),
+          :url => @template.url_for(sanitize_params(@template.params.permit!.merge(@smart_listing.all_params(:sort => sort_params)))),
           :container_classes => [@template.smart_listing_config.classes(:sortable)],
           :attribute => attribute,
           :title => title
